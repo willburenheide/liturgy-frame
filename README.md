@@ -101,4 +101,4 @@ The card first ran on a family photo-frame dashboard built on Wes Bos's
 [photo-frame-dashboard](https://github.com/wesbos/photo-frame-dashboard). The project is
 shared here for anyone in the Church building something similar.
 
-*Ad majorem Dei gloriam.* MIT licensed.
+*Ut in omnibus glorificetur Deus.* That in all things God may be glorified (Rule of St. Benedict 57). MIT licensed.
