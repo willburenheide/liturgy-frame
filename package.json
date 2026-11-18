@@ -1,0 +1,14 @@
+{
+  "name": "liturgy-frame",
+  "version": "1.0.0",
+  "description": "Today's liturgical day, Saint of the Day and Gospel for a home dashboard: a Cloudflare Worker and a drop-in card",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}

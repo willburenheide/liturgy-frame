@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "liturgy-frame",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./web", "binding": "ASSETS" },
+  "vars": {
+    // Liturgical Calendar API calendar: "nation/US", "nation/CA", "nation/IT", ... or "" for the
+    // General Roman Calendar. List: https://litcal.johnromanodorazio.com/api/v5/calendars
+    "CALENDAR": "nation/US",
+    // Your time zone, for the warm-up below (so tomorrow's reading is ready at midnight).
+    "TIMEZONE": "America/New_York"
+  },
+  // Optional: fetch the day's reading ahead of time, every 30 minutes.
+  "triggers": { "crons": ["*/30 * * * *"] }
+  // Optional: keep the year's calendar and the day's reading between restarts. Create one with
+  //   npx wrangler kv namespace create LITURGY_KV
+  // and paste the id here:
+  // , "kv_namespaces": [{ "binding": "LITURGY_KV", "id": "<your id>" }]
+}

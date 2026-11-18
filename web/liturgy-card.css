@@ -1,0 +1,72 @@
+/* liturgy-card.css: styles for liturgy-card.js. Change the variables to match your dashboard. */
+:root {
+  --lc-card: #FBF9F4;
+  --lc-paper: #F2EEE6;
+  --lc-ink: #111111;
+  --lc-ink-2: #3B3934;
+  --lc-mute: #6E6A61;
+  --lc-line: #D6CFC0;
+  --lc-serif: 'Instrument Serif', 'Noto Serif', Georgia, serif;
+  --lc-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --lc-radius: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --lc-card: #1F1D1A; --lc-paper: #161513; --lc-ink: #F2EEE6; --lc-ink-2: #D6CFC0; --lc-mute: #A39D90; --lc-line: #3B3934;
+  }
+}
+:root[data-theme="dark"] {
+  --lc-card: #1F1D1A; --lc-paper: #161513; --lc-ink: #F2EEE6; --lc-ink-2: #D6CFC0; --lc-mute: #A39D90; --lc-line: #3B3934;
+}
+
+/* the card */
+.lc { display: none; }
+.lc.on { display: flex; align-items: stretch; background: var(--lc-card); color: var(--lc-ink); border-radius: var(--lc-radius); overflow: hidden; font-family: var(--lc-sans); }
+.lc--tap { cursor: pointer; }
+.lc--tap:active { opacity: .85; }
+.lc-bar { flex: none; width: 10px; }
+.lc-body { flex: 1; min-width: 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 3px; }
+.lc-label { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--lc-mute); }
+.lc-name { font-family: var(--lc-serif); font-size: 26px; line-height: 1.05; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.lc-opt { font-size: 15px; color: var(--lc-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lc-meta { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--lc-mute); }
+.lc-dot { width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25); flex: none; }
+.lc-go { margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 14px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--lc-ink-2); }
+
+/* Advent wreath */
+.lc-wreath { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 16px 8px 0; color: var(--lc-ink-2); }
+.lc-wreath-cap { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--lc-mute); margin-top: 2px; white-space: nowrap; }
+.lc-flame { transform-box: fill-box; transform-origin: 50% 100%; animation: lc-flame 2.6s ease-in-out infinite alternate; }
+@keyframes lc-flame { from { transform: scale(1, 1); } to { transform: scale(.92, 1.1); } }
+@media (prefers-reduced-motion: reduce) { .lc-flame { animation: none; } }
+
+/* the reading panel */
+.lc-panel { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9000; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, .5); font-family: var(--lc-sans); }
+.lc-sheet { position: relative; width: 92vw; max-width: 1100px; height: 90vh; background: var(--lc-paper); color: var(--lc-ink); border-radius: 28px; overflow: hidden; }
+.lc-close { position: absolute; top: 14px; right: 14px; z-index: 1; width: 56px; height: 56px; border: 0; border-radius: 50%; background: var(--lc-ink); color: var(--lc-paper); font-size: 32px; line-height: 1; cursor: pointer; }
+.lc-scroll { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.lc-read { padding: 30px 40px 40px; }
+.lc-tabs { display: inline-flex; gap: 4px; padding: 4px; margin-bottom: 20px; border-radius: 999px; background: var(--lc-line); }
+.lc-tabs button { border: 0; border-radius: 999px; padding: 12px 22px; background: transparent; color: var(--lc-ink-2); font: 800 17px var(--lc-sans); cursor: pointer; }
+.lc-tabs button.is-on { background: var(--lc-ink); color: var(--lc-paper); }
+.lc-h { font-family: var(--lc-serif); font-weight: 400; font-size: 52px; line-height: 1; margin: 6px 0 22px; }
+.lc-read h3 { font-size: 22px; font-weight: 800; margin: 22px 0 6px; }
+.lc-read p { font-size: 20px; line-height: 1.5; margin: 0 0 12px; }
+.lc-quote { border-left: 3px solid var(--lc-line); padding-left: 16px; }
+.lc-img { margin: 0 0 20px; border-radius: 18px; background: #1A1917; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.lc-img img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.lc-src { margin-top: 22px; font-size: 15px; color: var(--lc-mute); }
+.lc-src a { color: inherit; }
+
+/* Holy Day of Obligation banner */
+.lc-holy { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 8000; display: flex; align-items: center; gap: 14px; max-width: calc(100vw - 32px); padding: 12px 14px 12px 18px; border-radius: 20px;
+  background: #F6EBD2; color: #3A2A05; box-shadow: inset 0 0 0 2px #C9A227, 0 6px 24px rgba(0, 0, 0, .2); font-family: var(--lc-sans); }
+.lc-holy b { display: block; font-size: 19px; }
+.lc-holy span { font-size: 15px; }
+.lc-holy button { flex: none; border: 0; border-radius: 999px; padding: 10px 20px; background: #3A2A05; color: #F6EBD2; font: 800 16px var(--lc-sans); cursor: pointer; }
+
+@media (max-width: 600px) {
+  .lc-read { padding: 24px 18px 30px; }
+  .lc-h { font-size: 38px; }
+  .lc-wreath svg { width: 90px; height: 65px; }
+}
